@@ -24,7 +24,24 @@ def get_movies():
     cursor = movie_collection.find()
     return [movie for movie in cursor]
 
+def get_avg_movies_bugdet():
+    # Récupérer la moyenne des budgets par Annéé
+    cursor = movie_collection.aggregate(
+       [
+         {
+           "$group":
+             {
+               "_id": "$release_year",
+               "avgBugget": { "$avg": "$budget" }
+             }
+         }
+       ]
+    )
+    
+    return [movie for movie in cursor]
 # TODO : checker que movie_object est bien du json
 # sinon le traiter comme un dico python ou le transformer en Json
 def insert_or_update_movie(movie_object):
     return movie_collection.replace_one({'_id': movie_object['_id']}, movie_object, upsert=True)
+
+
