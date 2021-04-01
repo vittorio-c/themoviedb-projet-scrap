@@ -19,3 +19,42 @@
 - Lauche the webapp locally :
 
 `flask run`
+
+
+Model de donnée pour les films : 
+
+```json
+{
+  "_id": "https://www.themoviedb.org/movie/527774-raya-and-the-last-dragon",
+  "title": "xxxx",
+  "url": "https://www.themoviedb.org/movie/527774-raya-and-the-last-dragon",
+  "release_year": 2001,
+  "user_rating": 80,
+  "picture_url": "<photo-url>",
+  "genres": ["animation", "thriller"],
+  "tags": ["warrior", "kung-fu"],
+  "budget": 24000000,
+  "revenues": 150000000,
+  "profit": "<budget - revenues>",
+  "duration": "1h 54m",
+  "country_releases": ["DE", "FR", "ES", "GB"],
+  "director": "Georges Martin",
+  "artists": [
+    {
+      "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+      "role": "Raya (voice)",
+      "name": "Carole Sergeant"
+    },
+    {
+      "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+      "role": "Raya (voice)",
+      "name": "Carole Sergeant"
+    },
+    {
+      "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+      "role": "Raya (voice)",
+      "name": "Carole Sergeant"
+    }
+    ]
+}
+```
