@@ -8,11 +8,16 @@ import re
 import numpy as np
 import matplotlib
 import sys
+from selenium.common.exceptions import NoSuchElementException
+from dotenv import dotenv_values
 
 def accept_coockies(browser):
-    cookie_button= browser.find_element_by_css_selector('#cookie_notice p:nth-child(2) a')
-    if cookie_button:
-        cookie_button.click()
+    try:
+        cookie_button= browser.find_element_by_css_selector('#cookie_notice p:nth-child(2) a')
+        if cookie_button:
+            cookie_button.click()
+    except NoSuchElementException:
+        pass
     time.sleep(1)
 
 def navigate_to_popular_movies(browser):
@@ -25,9 +30,12 @@ def navigate_to_infinite_scroll(browser):
     pagination_button = browser.find_element_by_css_selector('#pagination_page_1 a').click()
 
     SCROLL_PAUSE_TIME = 0.5
-    # Get scroll height
+    # Change this if you want more results :
+    MAX_PAGE_LIMIT = 1
+
     last_height = browser.execute_script("return document.body.scrollHeight")
-    count = 1
+    count_page = 1
+
     while True:
         # Scroll down to bottom
         browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -35,10 +43,13 @@ def navigate_to_infinite_scroll(browser):
         time.sleep(SCROLL_PAUSE_TIME)
         # Calculate new scroll height and compare with last scroll height
         new_height = browser.execute_script("return document.body.scrollHeight")
-        if new_height == last_height or count == 1:
+
+        # Loop will break if it reachs end of infinite scroll
+        # OR if it reachs MAX_PAGE_LIMIT
+        if new_height == last_height or count_page == MAX_PAGE_LIMIT:
             break
         last_height = new_height
-        count += 1
+        count_page += 1
 
 def get_movie_titles(soup):
     # return list avec les titles dans l'odre
@@ -69,20 +80,24 @@ def navigate_to_link(browser,link):
     time.sleep(1)
 
 def get_movie_budget(soup):
-    budget = soup.select('section.facts.left_column p:nth-child(4)')
+    budget = soup.select('section.facts.left_column p:nth-child(5)')
     print(budget)
     return budget
 
-browser = webdriver.Firefox(executable_path=r'/home/armymen/.local/bin/geckodriver')
+config = dict(dotenv_values(".env"))
+
+browser = webdriver.Chrome(executable_path=r'{}'.format(config['CHROMEDRVIER_PATH']))
 
 # =========================================
-navigate_to_link(browser, 'https://www.themoviedb.org/movie/602269-little-things')
-html = browser.page_source
-soup = BeautifulSoup(html, 'html.parser')
-budget = get_movie_budget(soup)
-print(budget)
+# FOR TESTING ONLY (uncomment if you want to test)
+#
+# navigate_to_link(browser, 'https://www.themoviedb.org/movie/602269-little-things')
+# html = browser.page_source
+# soup = BeautifulSoup(html, 'html.parser')
+# budget = get_movie_budget(soup)
+# print(budget)
 
-sys.exit(0)
+# sys.exit(0)
 # =========================================
 
 the_moviedb_base_url = 'https://www.themoviedb.org/'
@@ -102,24 +117,12 @@ ratings = get_movie_rating(soup)
 links = get_movie_links(soup)
 genres = []
 budgets = []
-revenues = []
 
 for link in links:
     navigate_to_link(browser, link)
     html = browser.page_source
     soup = BeautifulSoup(html, 'html.parser')
     genres.append(get_movie_genres(soup))
-    budgets.append(get_movie_budget())
-    # revenues.append(get_movie_revenus())
+    budgets.append(get_movie_budget(soup))
 
-df = pd.DataFrame(
-        {
-            "titles" : titles,
-            "dates" : dates,
-            "ratings" : ratings,
-            "link" : links,
-            "genres": genres
-        }
-        )
-
-print(df.to_string())
+# TODO insert in BDD

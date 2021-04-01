@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Movie list</h1>
+
+<ul class="movie__title">
+{% for movie in movies %}
+  <li>{{ movie.title }}</li>
+  <ul>
+      <li>Year : <strong>{{ movie.year }}</strong></li>
+      <li>Country : <strong>{{ movie.country }}</strong></li>
+      <li>Director : <strong>{{ movie.director_qry[0].first_name }} {{ movie.director_qry[0].last_name }}</strong></li>
+      <li>Actors : </li>
+      <ul>
+      {% for actor in movie.actors_qry %}
+      <li>{{ actor.first_name }} {{ actor.last_name }}</li>
+      {% endfor %}
+      </ul>
+  </ul>
+
+{% endfor %}
+</ul>
+
+{% endblock %}
+
