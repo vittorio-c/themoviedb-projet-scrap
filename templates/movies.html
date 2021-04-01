@@ -2,17 +2,29 @@
 {% block content %}
 <h1>Movie list</h1>
 
+{% if links['previous'] %}
+    <a href="{{ links['previous'] }}">Previous Page</a>
+{% else %}
+    <span href="/" class="deactivated-link">Previous Page</span>
+{% endif %}
+
+{% if links['next'] %}
+    <a href="{{ links['next'] }}">Next Page</a>
+{% else %}
+    <span href="/" class="deactivated-link">Next Page</span>
+{% endif %}
+
 <ul class="movie__title">
 {% for movie in movies %}
   <li>{{ movie.title }}</li>
   <ul>
-      <li>Year : <strong>{{ movie.year }}</strong></li>
-      <li>Country : <strong>{{ movie.country }}</strong></li>
-      <li>Director : <strong>{{ movie.director_qry[0].first_name }} {{ movie.director_qry[0].last_name }}</strong></li>
+      <li>Year : <strong>{{ movie.release_year }}</strong></li>
+      <li>Budget : <strong>{{ movie.budget }}</strong></li>
+      <li>Director : <strong>{{ movie.director }}</strong></li>
       <li>Actors : </li>
       <ul>
-      {% for actor in movie.actors_qry %}
-      <li>{{ actor.first_name }} {{ actor.last_name }}</li>
+      {% for actor in movie.artists %}
+      <li>{{ actor.name }}</li>
       {% endfor %}
       </ul>
   </ul>

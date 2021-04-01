@@ -1,21 +1,23 @@
 from connection.client import client
+from queries.filters import get_aggregate_filters
 
-movie_collection = client.themoviedb.movies
+movie_collection = client.themoviedb.movies_tests
 
 def get_movie(id):
     movie = movie_collection.find({'_id': id})
     return movie[0]
 
-def get_movies_paginated(page_size, page_num):
-    """
-    returns a set of documents belonging to page number `page_num`
-    where size of each page is `page_size`.
-    """
+def get_movies_paginated(page_size, page_num, filters = {}, order = 1):
     # Calculate number of documents to skip
     skips = page_size * (page_num - 1)
-    # Skip and limit
-    cursor = movie_collection.find().skip(skips).limit(page_size)
-    # Return documents
+
+    limit = { "$limit": page_size }
+    skip = { "$skip": skips }
+
+    aggregate_filters = get_aggregate_filters(filters, order)
+
+    cursor = movie_collection.aggregate([limit, skip, aggregate_filters])
+
     return [movie for movie in cursor]
 
 def get_movies():
