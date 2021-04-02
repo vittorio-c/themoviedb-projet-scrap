@@ -41,3 +41,13 @@ span.deactivated-link {
     color: grey;
     text-decoration: none;
 }
+
+div.movies_container {
+    display: flex;
+    align-items: stretch;
+}
+
+div.movies_container > aside {
+    margin-right: 2rem;
+    background-color: lightblue;
+}

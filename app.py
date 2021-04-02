@@ -13,10 +13,11 @@ def hello():
 @app.route("/movies")
 def movies():
     page_num = request.args.get('page') if request.args.get('page') else 1
-    filters = request.args.getlist('filters[]')
+    sorts = request.args.getlist('sorts[]')
     order = request.args.get('order') if request.args.get('order') else -1
     links = get_pagination_routes(page_num)
-    movies = query_movie.get_movies_paginated(15, int(page_num), filters, order)
+    movies = query_movie.get_movies_paginated(15, int(page_num), sorts, order)
+
 
     return render_template("movies.html", movies=movies, links=links)
 
