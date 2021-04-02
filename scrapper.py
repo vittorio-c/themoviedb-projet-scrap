@@ -60,12 +60,14 @@ def get_movie_titles(soup):
     return title
 
 def get_movie_dates(soup):
-    sub_soup = soup.select('section.header.poster div.title div.facts span.release')
+    sub_soup = soup.select('section.header.poster div.title h2 span.release_date')
     if len(sub_soup):
         date = sub_soup[0].get_text('', strip=True)
+        date = date.replace("(", "")
+        date = date.replace(")", "")
     else:
-        date = ''
-    return date
+        date = 'null'
+    return int(date)
 
 def get_movie_rating(soup):
     sub_soup = soup.select('section.header.poster div.consensus.details div.user_score_chart')
@@ -89,12 +91,30 @@ def get_movie_genres(soup):
     return genre
 
 def get_movie_budget(soup):
-    sub_soup = soup.select('section.facts.left_column p:nth-child(5)')
+#     sub_soup = soup.select('section.facts.left_column p:nth-child(5)')
+    sub_soup = soup.select('section.facts.left_column p')
+
+    dico = {
+        "Budget" : 0,
+        "Recette" : 0
+    }
     if len(sub_soup):
-        budget = sub_soup[0].get_text('', strip=True)
-    else:
-        budget = ''
-    return budget
+        value_budget = [0]
+        value_recette = [0]
+        for element in sub_soup:
+            element = element.get_text('', strip=True)
+            element = element.replace(",", "")
+            budget = re.findall('Budget\$(\d+)', element)        
+            recette = re.findall('Recette\$(\d+)', element)
+            if len(budget) > 0:
+                value_budget = budget
+                
+            if len(recette) > 0:
+                value_recette = recette
+    
+    dico['Budget'] = int(value_budget[0])
+    dico['Recette'] = int(value_recette[0])
+    return dico
 
 def get_movie_director(soup):
     sub_soup = soup.select('#original_header div.header_poster_wrapper section div.header_info ol > li p:nth-child(1) a')
@@ -129,5 +149,81 @@ def get_movie_duration(soup):
         duration = ''
     return duration
 
+def calc_profit(recette_budget):
+    
+    return (recette_budget["Recette"] - recette_budget["Budget"])
 
-print('hello')
+
+browser = webdriver.Chrome('C:\Program Files\chromedriver.exe')
+the_moviedb_base_url = 'https://www.themoviedb.org/'
+
+key = 25
+
+browser.get(the_moviedb_base_url)
+
+accept_coockies(browser)
+navigate_to_popular_movies(browser)
+navigate_to_infinite_scroll(browser)
+
+html = browser.page_source
+soup = BeautifulSoup(html, 'html.parser')
+
+links = get_movie_links(soup)
+
+for link in links:
+    navigate_to_link(browser, link)
+    html = browser.page_source
+    soup = BeautifulSoup(html, 'html.parser')
+    
+    title = get_movie_titles(soup)
+    url = link
+    release_year = get_movie_dates(soup)
+    user_rating = get_movie_rating(soup)
+    genres = get_movie_genres(soup)
+    recette_budget = get_movie_budget(soup)
+    budget = recette_budget["Budget"]
+    revenues = recette_budget["Recette"]
+    tags = get_movie_tags(soup)
+    picture_url = get_movie_picture_url(soup)
+    director = get_movie_director(soup)
+    duration = get_movie_duration(soup)
+    profit = calc_profit(recette_budget)
+    country_releases = ''
+    artists = ''
+    
+    movie_tab = {
+        "_id": link,
+        "title": title,
+        "url": link,
+        "release_year": release_year,
+        "user_rating": user_rating,
+        "picture_url": picture_url,
+        "genres": genres,
+        "tags": tags,
+        "budget": budget,
+        "revenues": revenues,
+        "profit": profit,
+        "duration": duration,
+        "country_releases": ["DE", "FR", "ES", "GB"],
+        "director": director,
+        "artists": [
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        }
+        ]
+    }
+
+    insert_or_update_movie(movie_tab)
+    

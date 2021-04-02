@@ -2,7 +2,7 @@ from connection.client import client
 from queries.filters import get_aggregate_filters
 from queries.sorts import get_aggregate_sorts
 
-movie_collection = client.themoviedb.movies_tests
+movie_collection = client.themoviedb.movies
 
 def get_movie(id):
     movie = movie_collection.find({'_id': id})
