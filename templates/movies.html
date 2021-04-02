@@ -42,6 +42,16 @@
             <div>
                 <input id="page" name="page" type="hidden" value="1">
             </div>
+            <p>Filtrer par genres : </p>
+
+            {% for genre in genres %}
+            <div>
+                <input type="checkbox" id="genres" name="genres[]" value="{{ genre }}">
+                <label for="genres">{{ genre }}</label>
+            </div>
+            {% endfor %}
+
+            <!-- <p>Filtrer par tags : </p> -->
         </form>
     </aside>
 
@@ -60,20 +70,27 @@
 
         <ul class="movie__title">
             {% for movie in movies %}
-            <li>{{ movie.title }}</li>
-            <ul>
-                <li>Année : <strong>{{ movie.release_year }}</strong></li>
-                <li>Budget : <strong>{{ movie.budget }}</strong></li>
-                <li>Revenus : <strong>{{ movie.revenues }}</strong></li>
-                <li>Bénéfices : <strong>{{ movie.profit }}</strong></li>
-                <li>Réalisateur : <strong>{{ movie.director }}</strong></li>
-                <li>Acteurs : </li>
-                <ul>
-                    {% for actor in movie.artists %}
-                    <li>{{ actor.name }}</li>
-                    {% endfor %}
-                </ul>
-            </ul>
+            <div class="movie__card">
+                <div class="movie--infos">
+                    <li>{{ movie.title }}</li>
+                    <ul>
+                        <li>Année : <strong>{{ movie.release_year }}</strong></li>
+                        <li>Budget : <strong>{{ movie.budget }}</strong></li>
+                        <li>Revenus : <strong>{{ movie.revenues }}</strong></li>
+                        <li>Bénéfices : <strong>{{ movie.profit }}</strong></li>
+                        <li>Réalisateur : <strong>{{ movie.director }}</strong></li>
+                        <li>Acteurs : </li>
+                        <ul>
+                            {% for actor in movie.artists %}
+                            <li>{{ actor.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </ul>
+                </div>
+                <div class="movie--image">
+                    <img src="{{ movie.picture_url }}"\>
+                </div>
+            </div>
 
             {% endfor %}
         </ul>
