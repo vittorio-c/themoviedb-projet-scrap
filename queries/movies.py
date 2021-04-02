@@ -1,5 +1,6 @@
 from connection.client import client
 from queries.filters import get_aggregate_filters
+from queries.sorts import get_aggregate_sorts
 
 movie_collection = client.themoviedb.movies_tests
 
@@ -7,16 +8,21 @@ def get_movie(id):
     movie = movie_collection.find({'_id': id})
     return movie[0]
 
-def get_movies_paginated(page_size, page_num, filters = {}, order = 1):
-    # Calculate number of documents to skip
+def get_movies_paginated(page_size, page_num, sorts = {}, order = 1):
     skips = page_size * (page_num - 1)
 
     limit = { "$limit": page_size }
     skip = { "$skip": skips }
 
-    aggregate_filters = get_aggregate_filters(filters, order)
+    if len(sorts) > 0:
+        agg_sorts = get_aggregate_sorts(sorts, order)
+        aggregate = [agg_sorts, skip, limit]
+    else:
+        # we default sorts to release_year and desc order
+        agg_sorts = { "$sort" : { "release_year" : int(order) }}
+        aggregate = [agg_sorts, skip, limit]
 
-    cursor = movie_collection.aggregate([limit, skip, aggregate_filters])
+    cursor = movie_collection.aggregate(aggregate)
 
     return [movie for movie in cursor]
 
