@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Movie Stats</h1>
+
+{% for plot in plot_urls %}
+    <img src="data:image/png;base64, {{ plot }}"\>
+{% endfor %}
+
+{% endblock %}
