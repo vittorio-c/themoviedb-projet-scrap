@@ -1,7 +1,22 @@
-ul.movie__title > li {
+div.movie--infos > li {
     list-style-type: none;
     font-size: 1.3rem;
     /* font-weight: bold; */
+}
+
+div.movie__card {
+    margin-bottom: 2rem;
+    display: flex;
+}
+
+div.movie--infos {
+    width: 70%;
+}
+
+div.movie--image img {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain
 }
 
 .message {

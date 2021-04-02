@@ -2,6 +2,10 @@ import pandas as pd
 from connection.client import client
 from queries.sorts import get_aggregate_sorts
 from utilities.plot import plot
+from io import BytesIO
+import base64
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 movie_collection = client.themoviedb.movies
 
@@ -59,3 +63,36 @@ def get_movies_stats():
 # sinon le traiter comme un dico python ou le transformer en Json
 def insert_or_update_movie(movie_object):
     return movie_collection.replace_one({'_id': movie_object['_id']}, movie_object, upsert=True)
+
+def best_films_genres():
+    cursor = movie_collection.aggregate(
+       [
+         {
+           "$group":
+             {
+               "_id": "$genres",
+               "avg_revenue": {"$avg": "$revenues"}
+
+             }
+         },
+             { "$sort" : { "nombre_film" : -1 }
+             }
+
+       ]
+    )
+
+    df =  pd.DataFrame(list([movie for movie in cursor])).head(6)
+
+    labels = df['_id']
+    revenues = df['avg_revenue']
+    fig1, ax1 = plt.subplots()
+    ax1.pie(revenues, labels=labels, autopct='%1.1f%%', startangle=90 , radius=1.5 )
+    plt.title("Les genres des films et leurs revenues", fontdict={'fontweight': 600,'fontsize':16}, y=1.2)
+    plt.legend(df['_id'],bbox_to_anchor=(1.3, 1.2))
+
+    img = BytesIO()
+    plt.savefig(img, format='png')
+    plt.close()
+    img.seek(0)
+
+    return base64.b64encode(img.getvalue())

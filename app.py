@@ -24,6 +24,7 @@ def movies():
 @app.route("/movies/stats")
 def movies_stats():
     plot_urls = query_movie.get_movies_stats()
+    plot_urls.append(query_movie.best_films_genres())
     plot_urls_decoded = [plot_url.decode('utf8') for plot_url in plot_urls]
 
     return render_template('movies_stats.html', plot_urls=plot_urls_decoded)
