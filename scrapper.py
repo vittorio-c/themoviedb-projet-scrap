@@ -11,7 +11,7 @@ import numpy as np
 import matplotlib
 import sys
 from dotenv import dotenv_values
-from queries.movies import insert_or_update_movie
+# from queries.movies import insert_or_update_movie
 
 def accept_coockies(browser):
     try:
@@ -153,8 +153,9 @@ def calc_profit(recette_budget):
     
     return (recette_budget["Recette"] - recette_budget["Budget"])
 
+env_var = dict(dotenv_values(".env"))
 
-browser = webdriver.Chrome('C:\Program Files\chromedriver.exe')
+browser = webdriver.Chrome('./drivers/chromedriver-'+ env_var['CHROMEDRVIER_VERSION'] +'.exe')
 the_moviedb_base_url = 'https://www.themoviedb.org/'
 
 key = 25
