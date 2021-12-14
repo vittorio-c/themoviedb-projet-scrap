@@ -1,17 +1,18 @@
-import time
 import json
-from selenium import webdriver
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import NoSuchElementException
+import re
+import sys
+import time
+
+import matplotlib
+import numpy as np
 import pandas as pd
 from bs4 import BeautifulSoup
-import re
-import numpy as np
-import matplotlib
-import sys
 from dotenv import dotenv_values
 from queries.movies import insert_or_update_movie
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 
 
 def accept_coockies(browser):

@@ -1,5 +1,6 @@
-import sys
 import datetime
+import sys
+
 import pymongo
 from dotenv import dotenv_values
 

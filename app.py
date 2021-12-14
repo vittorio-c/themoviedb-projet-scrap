@@ -1,10 +1,10 @@
-from flask import Flask
 from datetime import datetime
-from flask import Flask, render_template, request, redirect
+
+import queries.artists as query_artist
+import queries.movies as query_movie
+from flask import Flask, redirect, render_template, request
 from flask.helpers import url_for
 from utilities.paginate import get_pagination_routes
-import queries.movies as query_movie
-import queries.artists as query_artist
 
 app = Flask(__name__)
 
