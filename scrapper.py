@@ -15,7 +15,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 
 
-
 def accept_coockies(browser):
     try:
         cookie_button = browser.find_element_by_css_selector(
