@@ -13,6 +13,10 @@ import sys
 from dotenv import dotenv_values
 from queries.movies import insert_or_update_movie
 
+
+config = dict(dotenv_values(".env"))
+
+
 def accept_coockies(browser):
     try:
         cookie_button= browser.find_element_by_css_selector('#cookie_notice p:nth-child(2) a')
@@ -153,8 +157,7 @@ def calc_profit(recette_budget):
     
     return (recette_budget["Recette"] - recette_budget["Budget"])
 
-
-browser = webdriver.Chrome('C:\Program Files\chromedriver.exe')
+browser = webdriver.Chrome(config["CHROMEDRVIER_PATH"])
 the_moviedb_base_url = 'https://www.themoviedb.org/'
 
 key = 25
@@ -170,11 +173,13 @@ soup = BeautifulSoup(html, 'html.parser')
 
 links = get_movie_links(soup)
 
+country_releases = ''
+artists = ''
+
 for link in links:
     navigate_to_link(browser, link)
     html = browser.page_source
     soup = BeautifulSoup(html, 'html.parser')
-    
     title = get_movie_titles(soup)
     url = link
     release_year = get_movie_dates(soup)
@@ -188,9 +193,6 @@ for link in links:
     director = get_movie_director(soup)
     duration = get_movie_duration(soup)
     profit = calc_profit(recette_budget)
-    country_releases = ''
-    artists = ''
-    
     movie_tab = {
         "_id": link,
         "title": title,
