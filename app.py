@@ -8,11 +8,11 @@ import queries.artists as query_artist
 
 app = Flask(__name__)
 
-@app.route("/home")
-def hello():
-    return "<h1>A great website for movie nerds</h1>"
-
 @app.route("/")
+def hello():
+    return render_template("home.html")
+
+@app.route("/moviedb")
 def index():
     # Default sorting
     return redirect(url_for('movies') + '?sorts[]=release_year&order=-1&page=1')
