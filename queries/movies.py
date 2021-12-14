@@ -24,12 +24,11 @@ def get_movies_paginated(page_size, page_num, sorts={}, order=1):
 
     if len(sorts) > 0:
         agg_sorts = get_aggregate_sorts(sorts, order)
-        aggregate = [agg_sorts, skip, limit]
     else:
         # we default sorts to release_year and desc order
         agg_sorts = {"$sort": {"release_year": int(order)}}
-        aggregate = [agg_sorts, skip, limit]
 
+    aggregate = [agg_sorts, skip, limit]
     cursor = movie_collection.aggregate(aggregate)
 
     return [movie for movie in cursor]

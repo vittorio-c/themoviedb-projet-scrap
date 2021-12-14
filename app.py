@@ -22,9 +22,9 @@ def index():
 
 @app.route("/movies")
 def movies():
-    page_num = request.args.get("page") if request.args.get("page") else 1
+    page_num = request.args.get("page") or 1
     sorts = request.args.getlist("sorts[]")
-    order = request.args.get("order") if request.args.get("order") else -1
+    order = request.args.get("order") or -1
     links = get_pagination_routes(page_num, request)
     movies = query_movie.get_movies_paginated(15, int(page_num), sorts, order)
 
