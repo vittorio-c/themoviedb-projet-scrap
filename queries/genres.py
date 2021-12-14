@@ -5,6 +5,4 @@ from utilities.plot import plot
 
 movie_collection = client.themoviedb.movies_tests
 
-def get_genres():
-
-
+# def get_genres():
