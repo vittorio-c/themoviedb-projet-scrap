@@ -1,11 +1,12 @@
+import base64
+from io import BytesIO
+
+import matplotlib.pyplot as plt
 import pandas as pd
+import seaborn as sns
 from connection.client import client
 from queries.sorts import get_aggregate_sorts
 from utilities.plot import plot
-from io import BytesIO
-import base64
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 movie_collection = client.themoviedb.movies
 
