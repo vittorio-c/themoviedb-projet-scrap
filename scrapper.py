@@ -153,8 +153,9 @@ def calc_profit(recette_budget):
     
     return (recette_budget["Recette"] - recette_budget["Budget"])
 
+config = dict(dotenv_values(".env"))
 
-browser = webdriver.Chrome('C:\Program Files\chromedriver.exe')
+browser = webdriver.Chrome('./drivers/chromedriver-'+ config['CHROMEDRIVER_PATH'] +'.exe')
 the_moviedb_base_url = 'https://www.themoviedb.org/'
 
 key = 25
