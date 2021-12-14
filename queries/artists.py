@@ -4,5 +4,4 @@ from connection.client import client
 
 
 def get_artists():
-    artists = client.metflix.artists.find()
-    return artists
+    return client.metflix.artists.find()

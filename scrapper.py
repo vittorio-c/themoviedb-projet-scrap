@@ -68,11 +68,7 @@ def navigate_to_link(browser, link):
 
 def get_movie_titles(soup):
     sub_soup = soup.select("section.header.poster div.title h2 a")
-    if len(sub_soup):
-        title = sub_soup[0].get_text("", strip=True)
-    else:
-        title = ""
-    return title
+    return sub_soup[0].get_text("", strip=True) if len(sub_soup) else ""
 
 
 def get_movie_dates(soup):
@@ -90,11 +86,7 @@ def get_movie_rating(soup):
     sub_soup = soup.select(
         "section.header.poster div.consensus.details div.user_score_chart"
     )
-    if len(sub_soup):
-        rating = sub_soup[0].attrs["data-percent"]
-    else:
-        rating = ""
-    return rating
+    return sub_soup[0].attrs["data-percent"] if len(sub_soup) else ""
 
 
 def get_movie_links(soup):
@@ -113,7 +105,6 @@ def get_movie_genres(soup):
 
 
 def get_movie_budget(soup):
-    #     sub_soup = soup.select('section.facts.left_column p:nth-child(5)')
     sub_soup = soup.select("section.facts.left_column p")
 
     dico = {"Budget": 0, "Recette": 0}
@@ -140,11 +131,7 @@ def get_movie_director(soup):
     sub_soup = soup.select(
         "#original_header div.header_poster_wrapper section div.header_info ol > li p:nth-child(1) a"
     )
-    if len(sub_soup):
-        director = sub_soup[0].get_text("", strip=True)
-    else:
-        director = ""
-    return director
+    return sub_soup[0].get_text("", strip=True) if len(sub_soup) else ""
 
 
 def get_movie_tags(soup):
@@ -161,22 +148,14 @@ def get_movie_picture_url(soup):
     sub_soup = soup.select(
         "#original_header div.poster_wrapper div > div.image_content.backdrop img"
     )
-    if len(sub_soup):
-        picture_url = the_moviedb_base_url + sub_soup[0].attrs["src"]
-    else:
-        picture_url = ""
-    return picture_url
+    return the_moviedb_base_url + sub_soup[0].attrs["src"] if len(sub_soup) else ""
 
 
 def get_movie_duration(soup):
     sub_soup = soup.select(
         "#original_header div.header_poster_wrapper section div.title div span.runtime"
     )
-    if len(sub_soup):
-        duration = sub_soup[0].get_text("", strip=True)
-    else:
-        duration = ""
-    return duration
+    return sub_soup[0].get_text("", strip=True) if len(sub_soup) else ""
 
 
 def calc_profit(recette_budget):
