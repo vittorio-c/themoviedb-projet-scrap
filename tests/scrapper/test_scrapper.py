@@ -9,7 +9,7 @@ def instantiate_driver(request):
     config = dict(dotenv_values("../../.env.test"))
     print(config)
     web_driver = webdriver.Chrome(
-        "../../drivers/chromedriver-" + config["CHROMEDRIVER_VERSION"] + ".exe"
+        "../../drivers/chromedriver-96.exe"
     )
     request.cls.driver = web_driver
     yield
