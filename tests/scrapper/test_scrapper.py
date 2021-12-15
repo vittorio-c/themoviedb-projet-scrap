@@ -8,9 +8,7 @@ from selenium.common.exceptions import NoSuchElementException
 def instantiate_driver(request):
     config = dict(dotenv_values("../../.env.test"))
     print(config)
-    web_driver = webdriver.Chrome(
-        "../../drivers/chromedriver-96.exe"
-    )
+    web_driver = webdriver.Chrome("../../drivers/chromedriver-96.exe")
     request.cls.driver = web_driver
     yield
     web_driver.close()
