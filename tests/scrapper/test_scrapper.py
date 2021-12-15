@@ -7,6 +7,9 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 @pytest.fixture
@@ -35,7 +38,9 @@ class TestScrapper(BasicTest):
     def test_accept_cookies(self):
         the_moviedb_base_url = "https://www.themoviedb.org/"
         self.driver.get(the_moviedb_base_url)
+        print(self.driver.page_source)
         try:
+            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, 'cookie_notice')))
             cookie_button = self.driver.find_element(
                 By.CSS_SELECTOR, "#cookie_notice p:nth-child(2) a"
             )
