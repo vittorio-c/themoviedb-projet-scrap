@@ -22,6 +22,7 @@ def instantiate_driver(request):
     s = Service(ChromeDriverManager().install())
     # Create the webdriver
     web_driver = webdriver.Chrome(service=s, options=options)
+
     request.cls.driver = web_driver
     yield
     web_driver.close()
@@ -34,15 +35,17 @@ class BasicTest:
 
 class TestScrapper(BasicTest):
     def test_accept_cookies(self):
-        the_moviedb_base_url = "https://www.themoviedb.org/"
+        the_moviedb_base_url = "https://www.themoviedb.org/?language=fr-FR"
         self.driver.get(the_moviedb_base_url)
-        print(self.driver.page_source)
+        # print(self.driver.page_source)
         try:
             WebDriverWait(self.driver, 3).until(
                 EC.presence_of_element_located((By.ID, "main"))
             )
             time.sleep(10)
-            cookie_button = self.driver.find_element(By.CSS_SELECTOR, "a.accept")
+            cookie_button = self.driver.find_element(
+                By.CSS_SELECTOR, "#cookie_notice p:nth-child(2) a"
+            )
             assert 1
         except:
             assert False
