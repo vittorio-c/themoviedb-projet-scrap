@@ -7,6 +7,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import NoSuchElementException
 from webdriver_manager.chrome import ChromeDriverManager
 
 
@@ -34,18 +35,23 @@ class BasicTest:
 
 
 class TestScrapper(BasicTest):
-    def test_accept_cookies(self):
-        the_moviedb_base_url = "https://www.themoviedb.org/?language=fr-FR"
+    
+    def test_navigate_to_popular_movies(self):
+        the_moviedb_base_url = "https://www.themoviedb.org/"
         self.driver.get(the_moviedb_base_url)
-        # print(self.driver.page_source)
+        
         try:
             WebDriverWait(self.driver, 3).until(
                 EC.presence_of_element_located((By.ID, "main"))
             )
-            time.sleep(10)
-            cookie_button = self.driver.find_element(
-                By.CSS_SELECTOR, "#cookie_notice p:nth-child(2) a"
+            elem_menu = self.driver.find_element(
+                By.CSS_SELECTOR, "ul.dropdown_menu a[href=\"/movie\"]"
             )
-            assert 1
-        except:
+            if(elem_menu):
+                elem_menu.click()
+                if(self.driver.find_element(
+                    By.CSS_SELECTOR, "ul[data-role=\"popup\"] a[href=\"/movie\"]"
+                )):    
+                    assert True
+        except NoSuchElementException:
             assert False
