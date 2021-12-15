@@ -4,6 +4,7 @@ from pymongo.errors import OperationFailure
 from pymongo.mongo_client import MongoClient
 
 
+@pytest.mark.smoke
 def test_it_connects_to_mongo_server():
     maxSevSelDelay = 500  # in miliseconds
     client = MongoClient(
@@ -16,6 +17,7 @@ def test_it_connects_to_mongo_server():
     client.server_info()
 
 
+@pytest.mark.smoke
 def test_it_fails_connection_when_bad_credentials():
     with pytest.raises(OperationFailure):
         user = "some bad users"
