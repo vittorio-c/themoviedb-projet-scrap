@@ -42,9 +42,7 @@ class TestScrapper(BasicTest):
                 EC.presence_of_element_located((By.ID, "main"))
             )
             time.sleep(10)
-            cookie_button = self.driver.find_element(
-                By.CSS_SELECTOR, "#cookie_notice p:nth-child(2) a"
-            )
+            cookie_button = self.driver.find_element(By.CSS_SELECTOR, "a.accept")
             assert 1
         except:
             assert False
