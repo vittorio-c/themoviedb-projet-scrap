@@ -34,6 +34,7 @@ toml==0.10.2
 urllib3==1.26.7
 Werkzeug==2.0.2
 certifi==2021.10.8
+webdriver_manager==3.5.2
 wheel==0.37.0
 black==21.12b0
 isort==5.10.1
