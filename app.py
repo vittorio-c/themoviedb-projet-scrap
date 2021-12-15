@@ -2,6 +2,7 @@ from datetime import datetime
 
 import queries.artists as query_artist
 import queries.movies as query_movie
+import tests.smoke.functionalTest
 from flask import Flask, redirect, render_template, request
 from flask.helpers import url_for
 from utilities.paginate import get_pagination_routes
@@ -38,3 +39,9 @@ def movies_stats():
     plot_urls_decoded = [plot_url.decode("utf8") for plot_url in plot_urls]
 
     return render_template("movies_stats.html", plot_urls=plot_urls_decoded)
+
+@app.route("/test")
+def test():
+    tests.smoke.functionalTest.routing(app, request)
+
+    return render_template("movies_stats.html")
