@@ -28,4 +28,5 @@ jobs:
         MONGODB_ATLAS_USER: ${{ secrets.MONGODB_ATLAS_USER }}
         MONGODB_ATLAS_PASSWORD: ${{ secrets.MONGODB_ATLAS_PASSWORD }}
       run: |
-        pytest
+        pytest -v -m smoke
+        pytest -v -m "not smoke"
