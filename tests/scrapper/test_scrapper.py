@@ -38,8 +38,8 @@ class TestScrapper(BasicTest):
         self.driver.get(the_moviedb_base_url)
         print(self.driver.page_source)
         try:
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.ID, "cookie_notice"))
+            WebDriverWait(self.driver, 3).until(
+                EC.presence_of_element_located((By.ID, "main"))
             )
             cookie_button = self.driver.find_element(
                 By.CSS_SELECTOR, "#cookie_notice p:nth-child(2) a"
