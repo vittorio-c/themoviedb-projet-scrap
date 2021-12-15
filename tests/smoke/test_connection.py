@@ -6,6 +6,7 @@ from pymongo.mongo_client import MongoClient
 
 @pytest.mark.smoke
 def test_it_connects_to_mongo_server():
+    # We consider that beyond 500 miliseconds of response, server is down
     maxSevSelDelay = 500  # in miliseconds
     client = MongoClient(
         f"mongodb+srv://{user}:{password}@{host}/myFirstDatabase?retryWrites=true&w=majority",
@@ -28,3 +29,9 @@ def test_it_fails_connection_when_bad_credentials():
             tlsCAFile=ca,
         )
         client.server_info()
+
+
+@pytest.mark.smoke
+def test_it_connects_to_http_server(http_client):
+    response = http_client.get("/")
+    assert response.status_code == 200
