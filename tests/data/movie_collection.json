@@ -1,0 +1,445 @@
+[
+    {
+        "_id": "https://www.themoviedb.org//movie/399566",
+        "title": "Godzilla vs. Kong",
+        "url": "https://www.themoviedb.org//movie/399566",
+        "release_year": 2021,
+        "user_rating": "87.0",
+        "picture_url": "https://www.themoviedb.org//t/p/w300_and_h450_bestv2/4bTShLVFnVKK31cowgjdAIZV84T.jpg",
+        "genres": [
+            "Action",
+            "Science-Fiction"
+        ],
+        "tags": [
+            "giant monster",
+            "king kong",
+            "creature feature",
+            "kaiju",
+            "giant ape",
+            "godzilla",
+            "monsterverse"
+        ],
+        "budget": 200000000,
+        "revenues": 131532239,
+        "profit": -68467761,
+        "duration": "1h 53m",
+        "country_releases": [
+            "DE",
+            "FR",
+            "ES",
+            "GB"
+        ],
+        "director": "Adam Wingard",
+        "artists": [
+            {
+                "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+                "role": "Raya (voice)",
+                "name": "Carole Sergeant"
+            },
+            {
+                "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+                "role": "Raya (voice)",
+                "name": "Carole Sergeant"
+            },
+            {
+                "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+                "role": "Raya (voice)",
+                "name": "Carole Sergeant"
+            }
+        ]
+    },{
+    "_id": "https://www.themoviedb.org//movie/791373",
+    "title": "Zack Snyder's Justice League",
+    "url": "https://www.themoviedb.org//movie/791373",
+    "release_year": 2021,
+    "user_rating": "86.0",
+    "picture_url": "https://www.themoviedb.org//t/p/w300_and_h450_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg",
+    "genres": [
+        "Action",
+        "Aventure",
+        "Fantastique",
+        "Science-Fiction"
+    ],
+    "tags": [
+        "dc comics",
+        "superhero",
+        "based on comic",
+        "superhero team",
+        "dc extended universe",
+        "justice league",
+        "superhero teamup"
+    ],
+    "budget": 70000000,
+    "revenues": 0,
+    "profit": -70000000,
+    "duration": "4h 2m",
+    "country_releases": [
+        "DE",
+        "FR",
+        "ES",
+        "GB"
+    ],
+    "director": "Zack Snyder",
+    "artists": [
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        }
+    ]
+    },{
+    "_id": "https://www.themoviedb.org//movie/581389",
+    "title": "Space Sweepers",
+    "url": "https://www.themoviedb.org//movie/581389",
+    "release_year": 2021,
+    "user_rating": "72.0",
+    "picture_url": "https://www.themoviedb.org//t/p/w300_and_h450_bestv2/vq2cqGRmhEFQ2wS4D3BMcYRoUK4.jpg",
+    "genres": [
+        "Drame",
+        "Fantastique",
+        "Science-Fiction"
+    ],
+    "tags": [
+        "android",
+        "space colony",
+        "space opera",
+        "space adventure",
+        "spaceship",
+        "ecological disaster"
+    ],
+    "budget": 21000000,
+    "revenues": 0,
+    "profit": -21000000,
+    "duration": "2h 16m",
+    "country_releases": [
+        "DE",
+        "FR",
+        "ES",
+        "GB"
+    ],
+    "director": "Jo Sung-hee",
+    "artists": [
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        }
+    ]
+    },{
+    "_id": "https://www.themoviedb.org//movie/527774",
+    "title": "Raya et le dernier dragon",
+    "url": "https://www.themoviedb.org//movie/527774",
+    "release_year": 2021,
+    "user_rating": "83.0",
+    "picture_url": "https://www.themoviedb.org//t/p/w300_and_h450_bestv2/qDnumcHRzK9ljWtG5L1zRPhFRJg.jpg",
+    "genres": [
+        "Animation",
+        "Aventure",
+        "Fantastique",
+        "Familial",
+        "Action"
+    ],
+    "tags": [
+        "kung fu",
+        "trip",
+        "sword",
+        "warrior woman",
+        "computer animation",
+        "dragon",
+        "vietnamese",
+        "south asian",
+        "warrior"
+    ],
+    "budget": 0,
+    "revenues": 56482606,
+    "profit": 56482606,
+    "duration": "1h 54m",
+    "country_releases": [
+        "DE",
+        "FR",
+        "ES",
+        "GB"
+    ],
+    "director": "Carlos López Estrada",
+    "artists": [
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        }
+    ]
+    },{
+    "_id": "https://www.themoviedb.org//movie/587807",
+    "title": "Tom & Jerry",
+    "url": "https://www.themoviedb.org//movie/587807",
+    "release_year": 2021,
+    "user_rating": "74.0",
+    "picture_url": "https://www.themoviedb.org//t/p/w300_and_h450_bestv2/iPUcRfdAp85OJAPmdCfpvyu3cjk.jpg",
+    "genres": [
+        "Action",
+        "Comédie",
+        "Familial"
+    ],
+    "tags": [
+        "computer animation",
+        "racial stereotype",
+        "aftercreditsstinger",
+        "live action and animation",
+        "rapping animal",
+        "autotune"
+    ],
+    "budget": 50000000,
+    "revenues": 66890000,
+    "profit": 16890000,
+    "duration": "1h 41m",
+    "country_releases": [
+        "DE",
+        "FR",
+        "ES",
+        "GB"
+    ],
+    "director": "Joseph Barbera",
+    "artists": [
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        }
+    ]
+    },{
+    "_id": "https://www.themoviedb.org//movie/464052",
+    "title": "Wonder Woman 1984",
+    "url": "https://www.themoviedb.org//movie/464052",
+    "release_year": 2020,
+    "user_rating": "68.0",
+    "picture_url": "https://www.themoviedb.org//t/p/w300_and_h450_bestv2/kdEorjrPno4Cn7HYVN2DA0f3ocr.jpg",
+    "genres": [
+        "Fantastique",
+        "Action",
+        "Aventure"
+    ],
+    "tags": [
+        "dc comics",
+        "superhero",
+        "based on comic",
+        "1980s",
+        "action hero",
+        "dc extended universe"
+    ],
+    "budget": 200000000,
+    "revenues": 165160000,
+    "profit": -34840000,
+    "duration": "2h 41m",
+    "country_releases": [
+        "DE",
+        "FR",
+        "ES",
+        "GB"
+    ],
+    "director": "Patty Jenkins",
+    "artists": [
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        }
+    ]
+    },{
+    "_id": "https://www.themoviedb.org//movie/793723",
+    "title": "Sentinelle",
+    "url": "https://www.themoviedb.org//movie/793723",
+    "release_year": 2021,
+    "user_rating": "60.0",
+    "picture_url": "https://www.themoviedb.org//t/p/w300_and_h450_bestv2/AmUGn1rJ9XDDP6DYn9OA2uV8MIg.jpg",
+    "genres": [
+        "Thriller",
+        "Action",
+        "Drame"
+    ],
+    "tags": [
+        "post traumatic stress disorder",
+        "rape",
+        "marseille, france",
+        "army",
+        "revenge",
+        "siblings"
+    ],
+    "budget": 0,
+    "revenues": 0,
+    "profit": 0,
+    "duration": "1h 20m",
+    "country_releases": [
+        "DE",
+        "FR",
+        "ES",
+        "GB"
+    ],
+    "director": "Julien Leclercq",
+    "artists": [
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        }
+    ]
+    },{
+    "_id": "https://www.themoviedb.org//movie/544401",
+    "title": "Cherry",
+    "url": "https://www.themoviedb.org//movie/544401",
+    "release_year": 2021,
+    "user_rating": "76.0",
+    "picture_url": "https://www.themoviedb.org//t/p/w300_and_h450_bestv2/pwDvkDyaHEU9V7cApQhbcSJMG1w.jpg",
+    "genres": [
+        "Crime",
+        "Drame"
+    ],
+    "tags": [
+        "post traumatic stress disorder",
+        "based on novel or book",
+        "war veteran",
+        "drug addiction",
+        "bank robber",
+        "heroin",
+        "iraq war veteran",
+        "iraq war",
+        "army medic"
+    ],
+    "budget": 40000000,
+    "revenues": 0,
+    "profit": -40000000,
+    "duration": "2h 20m",
+    "country_releases": [
+        "DE",
+        "FR",
+        "ES",
+        "GB"
+    ],
+    "director": "Joe Russo",
+    "artists": [
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        }
+    ]
+    },{
+    "_id": "https://www.themoviedb.org//movie/458576",
+    "title": "Monster hunter",
+    "url": "https://www.themoviedb.org//movie/458576",
+    "release_year": 2020,
+    "user_rating": "71.0",
+    "picture_url": "https://www.themoviedb.org//t/p/w300_and_h450_bestv2/bGkgdY3SPX1p8LDCzrlDNJQ0h2y.jpg",
+    "genres": [
+        "Fantastique",
+        "Action",
+        "Aventure"
+    ],
+    "tags": [
+        "female soldier",
+        "another dimension",
+        "bow and arrow",
+        "based on video game",
+        "swordswoman",
+        "dimensional travel",
+        "giant monsters"
+    ],
+    "budget": 60000000,
+    "revenues": 25814306,
+    "profit": -34185694,
+    "duration": "1h 39m",
+    "country_releases": [
+        "DE",
+        "FR",
+        "ES",
+        "GB"
+    ],
+    "director": "Paul W. S. Anderson",
+    "artists": [
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        },
+        {
+            "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+            "role": "Raya (voice)",
+            "name": "Carole Sergeant"
+        }
+    ]
+    }
+]
