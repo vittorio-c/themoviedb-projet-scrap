@@ -26,16 +26,14 @@ def movie_col(load_movie_json):
     yield collection
 
 
-def test_it_can_paginate_with_correct_page_size(monkeypatch, movie_col):
+def test_it_can_paginate_with_correct_page_size(movie_col):
     query_movie.movie_collection = movie_col
     movie_results = query_movie.get_movies_paginated(15, 1)
 
     assert len(movie_results) == 15
 
 
-def test_it_can_paginate_with_correct_page_size_and_correct_page_number(
-    monkeypatch, movie_col
-):
+def test_it_can_paginate_with_correct_page_size_and_correct_page_number(movie_col):
     query_movie.movie_collection = movie_col
     first_page = query_movie.get_movies_paginated(15, 1)
     second_page = query_movie.get_movies_paginated(15, 2)
@@ -62,7 +60,7 @@ def test_it_can_paginate_with_correct_page_size_and_correct_page_number(
         ("budget", "-1", True),
     ],
 )
-def test_it_can_paginate_and_sort(monkeypatch, movie_col, sort, order, reverse):
+def test_it_can_paginate_and_sort(movie_col, sort, order, reverse):
     query_movie.movie_collection = movie_col
     movie_results = query_movie.get_movies_paginated(15, 1, sort, order)
     ordered_years = [movie[sort] for movie in movie_results]
