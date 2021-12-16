@@ -5,39 +5,43 @@
 
 import pytest
 import mongomock
-
-from queries.movies import get_movie, get_movies, get_movies_stats, insert_or_update_movie, best_films_genres
+from queries.movies import (
+    get_movie,
+    get_movies,
+    get_movies_stats, 
+    insert_or_update_movie, 
+    best_films_genres
+)
 import queries.movies as query_movie
-
-client = mongomock.MongoClient()
 
 class TestMovies:
 
     # On instancie une DB temporaire pour faire nos tests
+    client = mongomock.MongoClient()
     collection = client.themoviedb.movies
     query_movie.movie_collection = collection
 
     def test_insert_or_update_movie(self):
 
         movie_tab = {
-            "_id": 'https://www.themoviedb.org//movie/581389',
-            "title": 'Space Sweepers',
-            "url": 'https://www.themoviedb.org//movie/581389',            
+            "_id": "https://www.themoviedb.org//movie/581389",
+            "title": "Space Sweepers",
+            "url": "https://www.themoviedb.org//movie/581389",     
             "release_year": 2021,            
             "user_rating": "72.0",            
             "picture_url": "https://www.themoviedb.org//t/p/w300_and_h450_bestv2/vq2cqGRmhEFQ2wS4D3BMcYRoUK4.jpg",            
             "genres": [
-                'Drame',
-                'Fantastique',
-                'Science-Fiction',
+                "Drame",
+                "Fantastique",
+                "Science-Fiction",
             ],            
             "tags": [
-                'android',
-                'space colony',
-                'space opera',
-                'space adventure',
-                'spaceship',
-                'ecological disaster',
+                "android",
+                "space colony",
+                "space opera",
+                "space adventure",
+                "spaceship",
+                "ecological disaster",
             ],
             "budget": 21000000,       
             "revenues": 0,            
@@ -94,7 +98,6 @@ class TestMovies:
             assert True
         else: 
             assert False
-
         
     def test_best_films_genres(self):
         value = best_films_genres()
