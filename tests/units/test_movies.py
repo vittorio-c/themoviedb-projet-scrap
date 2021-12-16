@@ -6,7 +6,6 @@
 import pytest
 import mongomock
 import queries.movies as query_movie
-
 from queries.movies import (
     get_movie,
     get_movies,
