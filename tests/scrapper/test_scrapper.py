@@ -1,7 +1,4 @@
-import time
-
 import pytest
-from dotenv import dotenv_values
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.service import Service
@@ -51,6 +48,47 @@ class TestScrapper(BasicTest):
                 if self.driver.find_element(
                     By.CSS_SELECTOR, 'ul[data-role="popup"] a[href="/movie"]'
                 ):
+                    assert True
+        except NoSuchElementException:
+            assert False
+
+    def test_can_scroll_infinite(self):
+        the_moviedb_movie_url = "https://www.themoviedb.org/movie"
+        self.driver.get(the_moviedb_movie_url)
+
+        try:
+            WebDriverWait(self.driver, 3).until(
+                EC.presence_of_element_located((By.ID, "main"))
+            )
+            btn_to_scroll = self.driver.find_element(
+                By.CSS_SELECTOR, "#pagination_page_1 a"
+            )
+            if btn_to_scroll:
+                assert True
+        except NoSuchElementException:
+            assert False
+
+    @pytest.mark.parametrize(
+        "elem_selector",
+        [
+            ("section.header.poster div.title h2 a"),
+            ("section.header.poster div.title h2 span.release_date"),
+        ],
+    )
+    def test_get_elements_in_movie(self, elem_selector):
+        the_moviedb_movie_url = "https://www.themoviedb.org/movie"
+        self.driver.get(the_moviedb_movie_url)
+
+        try:
+            WebDriverWait(self.driver, 3).until(
+                EC.presence_of_element_located((By.ID, "main"))
+            )
+            first_movie = self.driver.find_element(
+                By.CSS_SELECTOR, "#media_results a[href*='/movie/']"
+            )
+            if first_movie:
+                first_movie.click()
+                if self.driver.find_element(By.CSS_SELECTOR, elem_selector):
                     assert True
         except NoSuchElementException:
             assert False

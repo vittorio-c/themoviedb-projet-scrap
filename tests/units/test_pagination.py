@@ -1,10 +1,13 @@
 import json
 import os
+import types
 
 import mongomock
 import pymongo
 import pytest
 import queries.movies as query_movie
+from flask.wrappers import Request
+from utilities.paginate import get_pagination_routes
 
 client = mongomock.MongoClient()
 
@@ -66,3 +69,17 @@ def test_it_can_paginate_and_sort(movie_col, sort, order, reverse):
     ordered_years = [movie[sort] for movie in movie_results]
 
     assert sorted(ordered_years, reverse=reverse) == ordered_years
+
+
+def test_it_builds_correct_pagination_urls():
+    request = types.SimpleNamespace(
+        url="http://localhost:5000/movies?sorts[]=release_year&order=1page=2"
+    )
+    expected = {
+        "next": "http://localhost:5000/movies?sorts[]=release_year&order=1page=3",
+        "previous": "http://localhost:5000/movies?sorts[]=release_year&order=1page=1",
+    }
+
+    pagination_route = get_pagination_routes(2, request)
+
+    assert pagination_route == expected
