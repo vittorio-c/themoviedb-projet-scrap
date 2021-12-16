@@ -70,9 +70,7 @@ class TestScrapper(BasicTest):
 
     @pytest.mark.parametrize(
         "elem_selector",
-        [
-            ("div.card.style_1 div.content h2 a")
-        ],
+        [("div.card.style_1 div.content h2 a")],
     )
     def test_get_title_movie_homepage(self, elem_selector):
         the_moviedb_movie_url = "https://www.themoviedb.org"
@@ -87,7 +85,6 @@ class TestScrapper(BasicTest):
         except NoSuchElementException:
             assert False
 
-
     @pytest.mark.parametrize(
         "elem_selector",
         [
@@ -96,10 +93,16 @@ class TestScrapper(BasicTest):
             ("section.header.poster div.consensus.details div.user_score_chart"),
             ("section.header.poster div.title div.facts span.genres"),
             ("section.facts.left_column p"),
-            ("#original_header div.header_poster_wrapper section div.header_info ol > li p:nth-child(1) a"),
+            (
+                "#original_header div.header_poster_wrapper section div.header_info ol > li p:nth-child(1) a"
+            ),
             ("div.media section.keywords ul li a"),
-            ("#original_header div.poster_wrapper div > div.image_content.backdrop img"),
-            ("#original_header div.header_poster_wrapper section div.title div span.runtime")
+            (
+                "#original_header div.poster_wrapper div > div.image_content.backdrop img"
+            ),
+            (
+                "#original_header div.header_poster_wrapper section div.title div span.runtime"
+            ),
         ],
     )
     def test_get_elements_in_movie_details(self, elem_selector):
