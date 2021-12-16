@@ -6,58 +6,22 @@
 import pytest
 import mongomock
 
-from queries.movies import get_movie, get_movies, get_movies_stats, get_movies_paginated, insert_or_update_movie, best_films_genres
+from queries.movies import get_movie, get_movies, get_movies_stats, insert_or_update_movie, best_films_genres
 import queries.movies as query_movie
 
 client = mongomock.MongoClient()
 
 class TestMovies:
 
-    movie_collection = client.themoviedb.movies
-
-    def test_get_movie(self):
-        id = 'https://www.themoviedb.org//movie/581389'
-        movie = self.movie_collection.find({"_id": id})
-
-        if movie:
-            assert True
-        else:
-            assert False
-
-    def test_get_movies(self):
-        movies = get_movies()
-
-        if movies == [movie for movie in self.movie_collection.find()]:
-            assert True
-        else:
-            assert False
-
-    def test_get_movies_stats(self):
-        value = get_movies_stats()
-        if value:
-            assert True
-        else: 
-            assert False
-
-    def test_get_movies_paginated(self):
-        page_size = 1
-        page_num = 1
-        sorts = {}
-        order = 1
-        result = get_movies_paginated(page_size, page_num, sorts, order)
-
-        if result: 
-            assert True
-        else:
-            assert False
+    # On instancie une DB temporaire pour faire nos tests
+    collection = client.themoviedb.movies
+    query_movie.movie_collection = collection
 
     def test_insert_or_update_movie(self):
-        collection = client.themoviedb.movies
-        query_movie.movie_collection = collection
 
         movie_tab = {
             "_id": 'https://www.themoviedb.org//movie/581389',
-            "title": 'Space Sweepers edit',
+            "title": 'Space Sweepers',
             "url": 'https://www.themoviedb.org//movie/581389',            
             "release_year": 2021,            
             "user_rating": "72.0",            
@@ -103,8 +67,32 @@ class TestMovies:
         result = insert_or_update_movie(movie_tab)
         
         if result:
-            print(result)
+            assert True
         else:
+            assert False
+
+    def test_get_movie(self):
+        id = 'https://www.themoviedb.org//movie/581389'
+        movie = query_movie.movie_collection.find({"_id": id})
+
+        if movie:
+            assert True
+        else:
+            assert False
+
+    def test_get_movies(self):
+        movies = get_movies()
+
+        if movies == [movie for movie in query_movie.movie_collection.find()]:
+            assert True
+        else:
+            assert False
+
+    def test_get_movies_stats(self):
+        value = get_movies_stats()
+        if value:
+            assert True
+        else: 
             assert False
 
         
