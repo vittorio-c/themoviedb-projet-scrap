@@ -4,8 +4,12 @@
 # pytest -v tests/test_movies.py
 
 import pytest
+import mongomock
+
 from queries.movies import get_movie, get_movies, get_movies_stats, get_movies_paginated, insert_or_update_movie, best_films_genres
-from connection.client import client
+import queries.movies as query_movie
+
+client = mongomock.MongoClient()
 
 class TestMovies:
 
@@ -48,7 +52,9 @@ class TestMovies:
             assert False
 
     def test_insert_or_update_movie(self):
-         
+        collection = client.themoviedb.movies
+        query_movie.movie_collection = collection
+
         movie_tab = {
             "_id": 'https://www.themoviedb.org//movie/581389',
             "title": 'Space Sweepers edit',
