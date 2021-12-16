@@ -5,6 +5,8 @@
 
 import pytest
 import mongomock
+import queries.movies as query_movie
+
 from queries.movies import (
     get_movie,
     get_movies,
@@ -12,7 +14,6 @@ from queries.movies import (
     insert_or_update_movie,
     best_films_genres,
 )
-import queries.movies as query_movie
 
 
 class TestMovies:
