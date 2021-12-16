@@ -23,5 +23,9 @@ jobs:
         black --check --diff .
         isort --check-only .
     - name: Test with Pytest
+      env:
+        MONGODB_ATLAS_HOST: ${{ secrets.MONGODB_ATLAS_HOST }}
+        MONGODB_ATLAS_USER: ${{ secrets.MONGODB_ATLAS_USER }}
+        MONGODB_ATLAS_PASSWORD: ${{ secrets.MONGODB_ATLAS_PASSWORD }}
       run: |
-        pytest
+        pytest -v -m smoke && pytest -v -m "not smoke"
