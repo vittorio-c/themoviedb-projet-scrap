@@ -1,7 +1,7 @@
 # Queries Tests
 
 # Command run all tests
-# pytest -v tests/test_movies.py
+# tests/test_movies.py
 
 import pytest
 import mongomock
@@ -54,11 +54,6 @@ class TestMovies:
                 {
                     "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
                     "role": "Raya (voice)",
-                    "name": "Carole Sergeant"
-                },
-                {
-                    "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
-                    "role": "Raya (voice)",
                     "name": "Carole Sergeant",
                 },
                 {
@@ -66,7 +61,12 @@ class TestMovies:
                     "role": "Raya (voice)",
                     "name": "Carole Sergeant",
                 },
-            ],           
+                {
+                    "_id": "https://www.themoviedb.org/person/1663195-kelly-marie-tran",
+                    "role": "Raya (voice)",
+                    "name": "Carole Sergeant",
+                },
+            ],
         }
 
         result = insert_or_update_movie(movie_tab)
