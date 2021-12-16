@@ -12,14 +12,25 @@
 
 - Fill env values in .env (see .env.example)
 
-- Lauch the scrapper :
+- (optional) Lauch the scrapper :
 
 `python scrapper/scrapper.py`
 
-- Lauche the webapp locally :
+- Lauche the backend server locally :
 
-`flask run`
+`FLASK_APP=app FLASK_ENV=development flask run`
 
+- Install front dependencies : 
+
+`yarn install`
+
+- Launch front server : 
+
+`yarn serve`
+
+- Access the app from : `http://localhost:8080/`
+
+# Misc
 
 Model de donnée pour les films : 
 

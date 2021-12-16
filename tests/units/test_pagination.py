@@ -78,6 +78,7 @@ def test_it_builds_correct_pagination_urls():
     expected = {
         "next": "http://localhost:5000/movies?sorts[]=release_year&order=1page=3",
         "previous": "http://localhost:5000/movies?sorts[]=release_year&order=1page=1",
+        "current": 2,
     }
 
     pagination_route = get_pagination_routes(2, request)
