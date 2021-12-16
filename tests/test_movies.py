@@ -7,7 +7,7 @@ import pytest
 from queries.movies import get_movie, get_movies, get_movies_stats, get_movies_paginated, insert_or_update_movie, best_films_genres
 from connection.client import client
 
-class TestMovies():
+class TestMovies:
 
     movie_collection = client.themoviedb.movies
 
