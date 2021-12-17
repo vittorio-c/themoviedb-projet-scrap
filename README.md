@@ -72,6 +72,11 @@
 - Tests avec 3 scénarios d'utilisation : 10 000, 50 000 et 100 000 utilisateurs faisant des requêtes à la fois sur site.
 - Rapports de tests générés en HTML et accessibles sur la route `/report`
 
+![locust1](https://user-images.githubusercontent.com/75723296/146565337-7877b28b-0735-4a2a-8662-61908ed665ee.png)
+![locust2](https://user-images.githubusercontent.com/75723296/146565415-3af7566d-311d-4f50-bbfe-6ca5b46adcf8.png)
+
+![locust3](https://user-images.githubusercontent.com/75723296/146565509-d7d836c0-9f19-4f9b-b280-aa3252f2618a.png)
+
 ### VueJS
 
 - Migration du projet sur VueJS + Tailwind, en préservant l'existant (templates jinja servis depuis Flask)
