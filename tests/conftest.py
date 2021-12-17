@@ -2,11 +2,9 @@ import json
 import os
 
 import mongomock
-import pymongo
 import pytest
 import queries.movies as query_movie
-
-client = mongomock.MongoClient()
+from app import app
 
 
 @pytest.fixture
@@ -26,10 +24,15 @@ def movie_col(load_movie_json):
     yield collection
 
 
-def test_it_can_paginate_over_results(monkeypatch, movie_col):
+@pytest.fixture
+def http_client():
+    app.config["TESTING"] = True
+
+    with app.test_client() as client:
+        yield client
+
+
+@pytest.fixture(autouse=True)
+def setup_mocked_db(movie_col):
+    # Replace Prod movie collection with Mocked movie collection for all tests
     query_movie.movie_collection = movie_col
-
-    movie_results = query_movie.get_movies_paginated(5, 1)
-
-    assert len(movie_results) == 5
-    # assert movie_results[0]['title'] == movie_col.find()[0]['title']

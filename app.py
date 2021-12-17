@@ -3,11 +3,21 @@ from datetime import datetime
 
 import queries.artists as query_artist
 import queries.movies as query_movie
-from flask import Flask, redirect, render_template, request
+from flask import Flask, jsonify, redirect, render_template, request
 from flask.helpers import url_for
+from flask_cors import CORS
 from utilities.paginate import get_pagination_routes
 
 app = Flask(__name__)
+
+# enable CORS
+CORS(app, resources={r"/*": {"origins": "*"}})
+
+
+# sanity check route
+@app.route("/ping", methods=["GET"])
+def ping_pong():
+    return jsonify("pong !")
 
 
 @app.route("/")
@@ -40,7 +50,6 @@ def movies_stats():
 
     return render_template("movies_stats.html", plot_urls=plot_urls_decoded)
 
-
 @app.route("/performances")
 def performances():
     return render_template("performances.html")
@@ -53,3 +62,13 @@ def reports():
     # exit()
     # return app.send_static_file(os.path.join(app.root_path, "templates","performance", "report_"+ nb_users + "_users.html"))
     return app.send_static_file("report_" + nb_users + "_users.html")
+
+@app.route("/api/movies", methods=["GET"])
+def api_movies():
+    page_num = request.args.get("page") or 1
+    sorts = request.args.getlist("sorts[]")
+    order = request.args.get("order") or -1
+    links = get_pagination_routes(page_num, request)
+    movies = query_movie.get_movies_paginated(15, int(page_num), sorts, order)
+
+    return jsonify({"data": movies, "_embed": links})
