@@ -8,7 +8,6 @@ from queries.movies import (
 
 
 class TestMovies:
-
     def test_insert_or_update_movie(self):
 
         movie_tab = {
