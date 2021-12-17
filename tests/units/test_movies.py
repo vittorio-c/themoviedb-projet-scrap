@@ -1,8 +1,3 @@
-# Queries Tests
-
-# Command run all tests
-# tests/test_movies.py
-
 import pytest
 import mongomock
 import queries.movies as query_movie
@@ -13,7 +8,6 @@ from queries.movies import (
     insert_or_update_movie,
     best_films_genres,
 )
-
 
 class TestMovies:
 
