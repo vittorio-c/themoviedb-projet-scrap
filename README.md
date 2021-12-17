@@ -69,6 +69,7 @@ Model de donnée pour les films :
     ]
 }
 
+```
 TEST
 
 Des tests ont été créés pour le script scrapper.py qui s'occupe d'aller scrapper le site "https://www.themoviedb.org/" afin de populer la base de données. Ils s'occupent de vérifier si le squelette du site cible a changé afin de revoir le scrapping au besoin. Ces tests se trouvent dans le fichier /tests/scrapper/test_scrapper.py
