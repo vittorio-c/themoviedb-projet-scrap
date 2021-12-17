@@ -45,6 +45,9 @@
 - Tests de plusieurs pages importantes pour s'assurer que le site n'a pas changé de façon importante
 - Plusieurs tests _parametrized_ afin de tester la présence de balises CSS spécifiques, utilisées dans le scrapper principal
 - A noter que : Les tests du fichier `tests/scrapper/test_scrapper.py` ne peuvent être pris en compte par le test coverage, car ils n'appellent pas directement les fonctions du `scrapper.py`. 
+- Un rapport de tests au format HTML a été créé :
+
+![rapport1 jpg](https://user-images.githubusercontent.com/75723296/146566026-bbc4394c-38f0-4acb-ac33-e10ab8c73f80.png)
 
 ### Mise en place d'une CI sur Github avec les Github Actions
 
