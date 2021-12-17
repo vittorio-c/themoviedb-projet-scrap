@@ -1,10 +1,6 @@
 import queries.movies as query_movie
-from queries.movies import (
-    get_movies,
-    get_movies_stats,
-    insert_or_update_movie,
-    best_films_genres,
-)
+from queries.movies import (best_films_genres, get_movies, get_movies_stats,
+                            insert_or_update_movie)
 
 
 class TestMovies:
