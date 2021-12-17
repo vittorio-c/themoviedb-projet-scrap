@@ -16,4 +16,4 @@ def client():
 def test_routing(client):
     for rule in app.url_map.iter_rules():
         rv = client.get(str(rule))
-        assert b"good" == rv.data
+        assert b"route" == rv.data
