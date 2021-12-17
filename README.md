@@ -45,6 +45,9 @@
 - Tests de plusieurs pages importantes pour s'assurer que le site n'a pas changé de façon importante
 - Plusieurs tests _parametrized_ afin de tester la présence de balises CSS spécifiques, utilisées dans le scrapper principal
 - A noter que : Les tests du fichier `tests/scrapper/test_scrapper.py` ne peuvent être pris en compte par le test coverage, car ils n'appellent pas directement les fonctions du `scrapper.py`. 
+- Un rapport de tests au format HTML a été créé :
+
+![rapport1 jpg](https://user-images.githubusercontent.com/75723296/146566026-bbc4394c-38f0-4acb-ac33-e10ab8c73f80.png)
 
 ### Mise en place d'une CI sur Github avec les Github Actions
 
@@ -71,6 +74,11 @@
 - Installation de locust pour les tests de montée en charge
 - Tests avec 3 scénarios d'utilisation : 10 000, 50 000 et 100 000 utilisateurs faisant des requêtes à la fois sur site.
 - Rapports de tests générés en HTML et accessibles sur la route `/report`
+
+![locust1](https://user-images.githubusercontent.com/75723296/146565337-7877b28b-0735-4a2a-8662-61908ed665ee.png)
+![locust2](https://user-images.githubusercontent.com/75723296/146565415-3af7566d-311d-4f50-bbfe-6ca5b46adcf8.png)
+
+![locust3](https://user-images.githubusercontent.com/75723296/146565509-d7d836c0-9f19-4f9b-b280-aa3252f2618a.png)
 
 ### VueJS
 
