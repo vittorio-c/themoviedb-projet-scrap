@@ -1,14 +1,5 @@
-# Queries Tests
-
-# Command run all tests
-# tests/test_movies.py
-
-import pytest
-import mongomock
 import queries.movies as query_movie
-
 from queries.movies import (
-    get_movie,
     get_movies,
     get_movies_stats,
     insert_or_update_movie,
@@ -17,11 +8,6 @@ from queries.movies import (
 
 
 class TestMovies:
-
-    # On instancie une DB temporaire pour faire nos tests
-    client = mongomock.MongoClient()
-    collection = client.themoviedb.movies
-    query_movie.movie_collection = collection
 
     def test_insert_or_update_movie(self):
 
