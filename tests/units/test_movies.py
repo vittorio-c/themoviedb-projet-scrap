@@ -1,4 +1,3 @@
-import pytest
 import mongomock
 import queries.movies as query_movie
 from queries.movies import (
@@ -9,12 +8,11 @@ from queries.movies import (
     best_films_genres,
 )
 
-client = mongomock.MongoClient()
-
 
 class TestMovies:
 
     # On instancie une DB temporaire pour faire nos tests
+    client = mongomock.MongoClient()
     collection = client.themoviedb.movies
     query_movie.movie_collection = collection
 
