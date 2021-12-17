@@ -3,7 +3,6 @@ from io import BytesIO
 
 import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sns
 from connection.client import client
 from queries.sorts import get_aggregate_sorts
 from utilities.plot import plot
@@ -16,7 +15,10 @@ def get_movie(id):
     return movie[0]
 
 
-def get_movies_paginated(page_size, page_num, sorts={}, order=1):
+def get_movies_paginated(page_size, page_num, sorts=None, order=1):
+    if sorts is None:
+        sorts = {}
+
     skips = page_size * (page_num - 1)
 
     limit = {"$limit": page_size}
