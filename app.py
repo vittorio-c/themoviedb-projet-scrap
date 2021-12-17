@@ -50,6 +50,7 @@ def movies_stats():
 
     return render_template("movies_stats.html", plot_urls=plot_urls_decoded)
 
+
 @app.route("/performances")
 def performances():
     return render_template("performances.html")
@@ -62,6 +63,7 @@ def reports():
     # exit()
     # return app.send_static_file(os.path.join(app.root_path, "templates","performance", "report_"+ nb_users + "_users.html"))
     return app.send_static_file("report_" + nb_users + "_users.html")
+
 
 @app.route("/api/movies", methods=["GET"])
 def api_movies():
