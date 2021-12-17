@@ -79,6 +79,15 @@
 - Le backend devient une API seule
 - Reste à faire : migration de toutes les routes de backend sur l'api `/api/my_route>`
 
+## Coverage
+
+**45 %** : ce chiffre ne tient pas compte des tests effectués sur le scrapper, qui ne peuvent pas être inclus par le coverage de pytest (pas d'appels directs aux fonctions du scrapper). Par conséquent, nous sommes plus dans les 60%.
+
+[Coverage](./reports_tests/cover_2.png)
+
+[Détails](./reports_tests/cover_1.png)
+
+[Détails 2](./reports_tests/cover_3.png)
 
 # Misc
 
