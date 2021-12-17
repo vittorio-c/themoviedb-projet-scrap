@@ -1,43 +1,17 @@
-import json
-import os
 import types
 
-import mongomock
-import pymongo
 import pytest
 import queries.movies as query_movie
-from flask.wrappers import Request
 from utilities.paginate import get_pagination_routes
 
-client = mongomock.MongoClient()
 
-
-@pytest.fixture
-def load_movie_json():
-    file_path = os.getcwd() + "/tests/data/movie_collection.json"
-    with open(file_path) as file:
-        movie_collection = json.load(file)
-        yield movie_collection
-
-
-@pytest.fixture
-def movie_col(load_movie_json):
-    collection = mongomock.MongoClient().themoviedb.movies
-    for movie in load_movie_json:
-        collection.insert_one(movie)
-
-    yield collection
-
-
-def test_it_can_paginate_with_correct_page_size(movie_col):
-    query_movie.movie_collection = movie_col
+def test_it_can_paginate_with_correct_page_size():
     movie_results = query_movie.get_movies_paginated(15, 1)
 
     assert len(movie_results) == 15
 
 
-def test_it_can_paginate_with_correct_page_size_and_correct_page_number(movie_col):
-    query_movie.movie_collection = movie_col
+def test_it_can_paginate_with_correct_page_size_and_correct_page_number():
     first_page = query_movie.get_movies_paginated(15, 1)
     second_page = query_movie.get_movies_paginated(15, 2)
 
@@ -63,8 +37,7 @@ def test_it_can_paginate_with_correct_page_size_and_correct_page_number(movie_co
         ("budget", "-1", True),
     ],
 )
-def test_it_can_paginate_and_sort(movie_col, sort, order, reverse):
-    query_movie.movie_collection = movie_col
+def test_it_can_paginate_and_sort(sort, order, reverse):
     movie_results = query_movie.get_movies_paginated(15, 1, sort, order)
     ordered_years = [movie[sort] for movie in movie_results]
 

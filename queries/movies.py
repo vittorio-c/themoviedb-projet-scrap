@@ -3,7 +3,6 @@ from io import BytesIO
 
 import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sns
 from connection.client import client
 from queries.sorts import get_aggregate_sorts
 from utilities.plot import plot
