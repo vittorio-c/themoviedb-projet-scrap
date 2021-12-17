@@ -1,6 +1,4 @@
 import queries.movies as query_movie
-from queries.movies import (best_films_genres, get_movies, get_movies_stats,
-                            insert_or_update_movie)
 
 
 class TestMovies:
@@ -51,7 +49,7 @@ class TestMovies:
             ],
         }
 
-        result = insert_or_update_movie(movie_tab)
+        result = query_movie.insert_or_update_movie(movie_tab)
 
         if result:
             assert True
@@ -68,7 +66,7 @@ class TestMovies:
             assert False
 
     def test_get_movies(self):
-        movies = get_movies()
+        movies = query_movie.get_movies()
 
         if movies == [movie for movie in query_movie.movie_collection.find()]:
             assert True
@@ -76,14 +74,14 @@ class TestMovies:
             assert False
 
     def test_get_movies_stats(self):
-        value = get_movies_stats()
+        value = query_movie.get_movies_stats()
         if value:
             assert True
         else:
             assert False
 
     def test_best_films_genres(self):
-        value = best_films_genres()
+        value = query_movie.best_films_genres()
         if value:
             assert True
         else:
