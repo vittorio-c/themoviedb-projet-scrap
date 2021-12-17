@@ -76,5 +76,5 @@ Des tests ont été créés pour le script scrapper.py qui s'occupe d'aller scra
 
 On peut constater le rapport suivant :
 
-![alt text](https://github.com/vittorio-c/themoviedb-projet-scrap/blob/main/rapport1.png?raw=true)
+![rapport1 jpg](https://user-images.githubusercontent.com/75723296/146558506-16a70970-439b-490b-802f-5636908a7b3a.png)
 
