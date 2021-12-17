@@ -16,4 +16,4 @@ def get_pagination_routes(page_num, request):
     else:
         previous_url = False
 
-    return {"next": next_url, "previous": previous_url}
+    return {"next": next_url, "previous": previous_url, "current": page_num}
