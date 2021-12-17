@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 
 import queries.artists as query_artist
@@ -38,3 +39,17 @@ def movies_stats():
     plot_urls_decoded = [plot_url.decode("utf8") for plot_url in plot_urls]
 
     return render_template("movies_stats.html", plot_urls=plot_urls_decoded)
+
+
+@app.route("/performances")
+def performances():
+    return render_template("performances.html")
+
+
+@app.route("/report")
+def reports():
+    nb_users = request.args.get("nbusers")
+    print(os.path.join("performance", "report_" + nb_users + "_users.html"))
+    # exit()
+    # return app.send_static_file(os.path.join(app.root_path, "templates","performance", "report_"+ nb_users + "_users.html"))
+    return app.send_static_file("report_" + nb_users + "_users.html")
