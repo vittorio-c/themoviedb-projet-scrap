@@ -1,6 +1,6 @@
 # About
 
-This student collaborative project deploys a web scrapper for fetching movies data from [The movied DB website](https://www.themoviedb.org/), store it to a MongoDB server and print it in a frontend interface.
+This student collaborative project deploys a web scrapper for fetching movies data from [The movied DB website](https://www.themoviedb.org/), stores it to a MongoDB server and prints it in a frontend interface.
 
 It uses following stack :
 
