@@ -1,4 +1,15 @@
-# themoviedb-projet-scrap
+# About
+
+This student collaborative project deploys a web scrapper for fetching movies data from [The movied DB website](https://www.themoviedb.org/), store it to a MongoDB server and prin it in a frontend interface.
+
+It uses following stack :
+
+- MongoDB as DB
+- Python Flask as web framework
+- Selenium as scrapping library
+- VueJS as frontend framework
+
+It also deploys a collection of tests with `pytest`, to ensure quality and consistency of code.
 
 ## Steps to get started
 
@@ -16,15 +27,15 @@
 
 `python scrapper/scrapper.py`
 
-- Lauche the backend server locally :
+- Launche the backend server locally :
 
 `FLASK_APP=app FLASK_ENV=development flask run`
 
-- Install front dependencies : 
+- Install front dependencies :
 
 `yarn install`
 
-- Launch front server : 
+- Launch front server :
 
 `yarn serve`
 
@@ -44,7 +55,7 @@
 - Instanciation d'un driver dédié compatible avec la CI sur github
 - Tests de plusieurs pages importantes pour s'assurer que le site n'a pas changé de façon importante
 - Plusieurs tests _parametrized_ afin de tester la présence de balises CSS spécifiques, utilisées dans le scrapper principal
-- A noter que : Les tests du fichier `tests/scrapper/test_scrapper.py` ne peuvent être pris en compte par le test coverage, car ils n'appellent pas directement les fonctions du `scrapper.py`. 
+- A noter que : Les tests du fichier `tests/scrapper/test_scrapper.py` ne peuvent être pris en compte par le test coverage, car ils n'appellent pas directement les fonctions du `scrapper.py`.
 - Un rapport de tests au format HTML a été créé :
 
 ![rapport1 jpg](https://user-images.githubusercontent.com/75723296/146566026-bbc4394c-38f0-4acb-ac33-e10ab8c73f80.png)
@@ -65,7 +76,7 @@
 - Typologie des tests écrits :
   - Smoke tests
   - Tests des routes
-  - Tests de la pagination 
+  - Tests de la pagination
   - Tests des fonctions CRUD liées à la BDD
 - Reste à faire : les tests d'intégration + les tests _end to end_
 
@@ -99,7 +110,7 @@
 
 # Misc
 
-Model de donnée pour les films : 
+Model de donnée pour les films :
 
 ```json
 {
